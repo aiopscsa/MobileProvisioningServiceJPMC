@@ -40,7 +40,7 @@ pipeline {
         }
     }
     */
- /*    
+    
   stage ('Test - Selenium') {
    steps {
     script {
@@ -49,7 +49,7 @@ pipeline {
     }
    }
   }
-  */
+  
  /*   
     stage('CAAPMPerformanceComparator') {
         steps { 
