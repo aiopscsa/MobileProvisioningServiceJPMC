@@ -45,7 +45,7 @@ pipeline {
    steps {
     script {
        echo "Running the Selenium Test Script"
-       sh "sudo ./jenkinsSeleniumRunner.sh"
+       sh "./jenkinsSeleniumRunner.sh"
     }
    }
   }
