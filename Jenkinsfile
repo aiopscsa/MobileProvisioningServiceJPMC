@@ -70,8 +70,9 @@ pipeline {
 
      publishHTML([allowMissing: false, alwaysLinkToLastBuild: true, keepAll: false, reportDir: "${env.BUILD_NUMBER}/", reportFiles: 'chart-output.html', reportName: 'CA APM Comparison Reports', reportTitles: ''])
 }
-*/
+
    } 
+ */
    
  }
 }
