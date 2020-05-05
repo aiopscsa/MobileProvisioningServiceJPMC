@@ -17,6 +17,7 @@ pipeline {
            }
          }
     }
+  /*
     stage('Blazemeter'){
         steps{
            script {
@@ -38,7 +39,17 @@ pipeline {
           }
         }
     }
-    
+    */
+     
+  stage ('Test - Selenium') {
+   steps {
+    script {
+       echo "Running the Selenium Test Script"
+       sh "sudo ./jenkinsSeleniumRunner.sh"
+    }
+   }
+  }
+ /*   
     stage('CAAPMPerformanceComparator') {
         steps { 
              caapmplugin performanceComparatorProperties: "${env.WORKSPACE}/properties/performance-comparator.properties",
@@ -49,7 +60,7 @@ pipeline {
                             attribsStr: "$map";
         }
     }  
-    
+    */
      stage ('Publish CA APM Comparison Reports') {
         steps{
       echo " chart folder is ${env.BUILD_NUMBER}/"
