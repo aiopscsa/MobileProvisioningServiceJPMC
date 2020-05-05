@@ -40,7 +40,7 @@ pipeline {
         }
     }
     */
-     
+ /*    
   stage ('Test - Selenium') {
    steps {
     script {
@@ -49,6 +49,7 @@ pipeline {
     }
    }
   }
+  */
  /*   
     stage('CAAPMPerformanceComparator') {
         steps { 
@@ -61,6 +62,7 @@ pipeline {
         }
     }  
     */
+  /*
      stage ('Publish CA APM Comparison Reports') {
         steps{
       echo " chart folder is ${env.BUILD_NUMBER}/"
@@ -68,6 +70,7 @@ pipeline {
 
      publishHTML([allowMissing: false, alwaysLinkToLastBuild: true, keepAll: false, reportDir: "${env.BUILD_NUMBER}/", reportFiles: 'chart-output.html', reportName: 'CA APM Comparison Reports', reportTitles: ''])
 }
+*/
    } 
    
  }
