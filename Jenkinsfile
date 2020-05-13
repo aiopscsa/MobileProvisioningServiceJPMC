@@ -5,7 +5,7 @@ pipeline {
          steps{
            script {
             echo "Maven Build"
-            sleep(time:28,unit:"SECONDS")
+            sleep(time:15,unit:"SECONDS")
            }
          }
     }
@@ -13,7 +13,7 @@ pipeline {
          steps{
            script {
             echo "Maven deploy"
-            sleep(time:61,unit:"SECONDS")
+            sleep(time:25,unit:"SECONDS")
            }
          }
     }
@@ -41,14 +41,19 @@ pipeline {
     }
     */
     
-  stage ('Test - Selenium') {
-   steps {
-    script {
-       echo "Running the Selenium Test Script"
-      // sh "./jenkinsSeleniumRunner.sh"
+    stage('Selenium') {
+         steps{
+           script {
+            dir ("/root/selenium") {
+            echo "running Selenium Test"
+           sh "kubectl create -f selenium-standalone-slow.yml -n selenium"
+             sleep(time:60,unit:"SECONDS")
+           sh "kubectl delete -f selenium-standalone-slow.yml -n selenium"
+             echo "Done Selenium Test"
+         } 
+        }
+      }
     }
-   }
-  }
   
  /*    
     stage('CAAPMPerformanceComparator') {
