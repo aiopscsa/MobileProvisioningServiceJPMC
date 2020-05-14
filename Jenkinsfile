@@ -49,20 +49,7 @@ pipeline {
            sh "kubectl create -f selenium-standalone-slow.yml -n selenium"
              sleep(time:60,unit:"SECONDS")
              
-             loadGeneratorName = env.STAGE_NAME;
-            loadGeneratorStartTime = System.currentTimeMillis();
-            blazeMeterTest credentialsId:'ae0fe96b-5b1e-4c32-9dc6-06b219da766d',
-            serverUrl:'https://blazemeter.ca.com',
-            //testId:'6518001',
-            testId:'7389604',
-            notes:'',
-            sessionProperties:'',
-            jtlPath:'',
-            junitPath:'',
-            getJtl:false,
-            getJunit:false
-            loadGeneratorEndTime = System.currentTimeMillis();
-                         map = [jenkinsPluginName: "CAAPM"];
+            
              
            sh "kubectl delete -f selenium-standalone-slow.yml -n selenium"
              echo "Done Selenium Test"
