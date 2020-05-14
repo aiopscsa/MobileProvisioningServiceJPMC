@@ -47,7 +47,7 @@ pipeline {
             dir ("/root/selenium") {
             echo "running Selenium Test"
            sh "kubectl create -f selenium-standalone-slow.yml -n selenium"
-             sleep(time:60,unit:"SECONDS")
+             sleep(time:10,unit:"SECONDS")
              
             loadGeneratorName = env.STAGE_NAME;
             loadGeneratorStartTime = System.currentTimeMillis();
@@ -66,13 +66,13 @@ pipeline {
                          map = [jenkinsPluginName: "CAAPM"];
              
            sh "kubectl delete -f selenium-standalone-slow.yml -n selenium"
-             echo "Done Selenium Test"
+             echo "Done Blazemeter Test"
          } 
         }
       }
     }
   
- /*    
+     
     stage('CAAPMPerformanceComparator') {
         steps { 
              caapmplugin performanceComparatorProperties: "${env.WORKSPACE}/properties/performance-comparator.properties",
@@ -83,8 +83,8 @@ pipeline {
                             attribsStr: "$map";
         }
     }  
-    */
-  /*
+    
+  
      stage ('Publish CA APM Comparison Reports') {
         steps{
       echo " chart folder is ${env.BUILD_NUMBER}/"
@@ -94,7 +94,7 @@ pipeline {
 }
 
    } 
- */
+ 
    
  }
 }
