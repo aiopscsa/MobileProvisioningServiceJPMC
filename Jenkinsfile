@@ -51,7 +51,7 @@ pipeline {
              
             loadGeneratorName = env.STAGE_NAME;
             loadGeneratorStartTime = System.currentTimeMillis();
-            blazeMeterTest credentialsId:'ae0fe96b-5b1e-4c32-9dc6-06b219da766d',
+            blazeMeterTest credentialsId:'	aa2b41eb-23f3-4045-afe5-374a0b28d202',
             serverUrl:'https://blazemeter.ca.com',
             //testId:'6518001',
             testId:'7389604',
