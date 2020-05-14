@@ -75,7 +75,7 @@ pipeline {
      
     stage('CAAPMPerformanceComparator') {
         steps { 
-             caapmplugin performanceComparatorProperties: "${env.WORKSPACE}/caapm-performance-comparator-1.0/properties/performance-comparator.properties",
+             caapmplugin performanceComparatorProperties: "${env.WORKSPACE}/caapm-performance-comparator/properties/performance-comparator.properties",
              loadGeneratorStartTime: "$loadGeneratorStartTime",
              loadGeneratorEndTime: "$loadGeneratorEndTime",
              loadGeneratorName: "$loadGeneratorName",
