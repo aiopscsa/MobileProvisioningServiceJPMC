@@ -51,7 +51,7 @@ pipeline {
              
             loadGeneratorName = env.STAGE_NAME;
             loadGeneratorStartTime = System.currentTimeMillis();
-            blazeMeterTest credentialsId:'	aa2b41eb-23f3-4045-afe5-374a0b28d202',
+            blazeMeterTest credentialsId:'aa2b41eb-23f3-4045-afe5-374a0b28d202',
             serverUrl:'https://blazemeter.ca.com',
             //testId:'6518001',
             testId:'7389604',
@@ -65,7 +65,7 @@ pipeline {
 
                          map = [jenkinsPluginName: "CAAPM"];
              
-           sh "kubectl delete -f selenium-standalone-slow.yml -n selenium"
+           //sh "kubectl delete -f selenium-standalone-slow.yml -n selenium"
              echo "Done Selenium Test"
          } 
         }
