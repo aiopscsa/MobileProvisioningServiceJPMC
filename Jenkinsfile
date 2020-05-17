@@ -65,6 +65,8 @@ pipeline {
 
                          map = [jenkinsPluginName: "CAAPM"];
              
+           sleep(time:5,unit:"SECONDS")
+             
            sh "kubectl delete -f selenium-standalone-slow.yml -n selenium"
              echo "Done Blazemeter Test"
          } 
