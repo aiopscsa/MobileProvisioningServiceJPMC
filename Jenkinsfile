@@ -87,7 +87,7 @@ pipeline {
     }  
     
   
-     stage ('Publish CA APM Comparison Reports') {
+   /*  stage ('Publish CA APM Comparison Reports') {
         steps{
       echo " chart folder is ${env.BUILD_NUMBER}/"
       echo " ....  ${env.JOB_NAME}/"
@@ -98,7 +98,7 @@ pipeline {
  }
 
    } 
- 
+ */
    
   }
  }
