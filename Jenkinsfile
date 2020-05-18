@@ -91,6 +91,8 @@ pipeline {
         steps{
       echo " chart folder is ${env.BUILD_NUMBER}/"
       echo " ....  ${env.JOB_NAME}/"
+         
+         sleep(time:105,unit:"SECONDS")
 
      publishHTML([allowMissing: false, alwaysLinkToLastBuild: true, keepAll: false, reportDir: "${env.BUILD_NUMBER}/", reportFiles: 'chart-output.html', reportName: 'CA APM Comparison Reports', reportTitles: ''])
  }
