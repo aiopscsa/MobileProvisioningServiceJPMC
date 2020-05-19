@@ -47,9 +47,9 @@ pipeline {
             dir ("/root/selenium") {
             echo "running Selenium Test"
              //Deleting selenium just in case - ignore the error if it was deleted already
-             sh "set +e"
+             catchError {
              sh "kubectl delete -f selenium-standalone-slow.yml -n selenium"
-             sh "set -e"
+             }
            sh "kubectl create -f selenium-standalone-slow.yml -n selenium"
              sleep(time:10,unit:"SECONDS")
              
