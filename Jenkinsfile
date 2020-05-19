@@ -48,6 +48,7 @@ pipeline {
             echo "running Selenium Test"
              //Deleting selenium just in case - ignore the error if it was deleted already
              catchError {
+              echo "ensure any prev running slow UC. Ignore any error"
              sh "kubectl delete -f selenium-standalone-slow.yml -n selenium"
              }
            sh "kubectl create -f selenium-standalone-slow.yml -n selenium"
