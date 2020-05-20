@@ -15,7 +15,7 @@ pipeline {
             echo "Maven deploy"
             sleep(time:25,unit:"SECONDS")
            }
-         }
+        }
     }
   /*
     stage('Blazemeter'){
