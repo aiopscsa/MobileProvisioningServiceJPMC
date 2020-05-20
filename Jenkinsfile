@@ -51,6 +51,13 @@ pipeline {
             //  echo "ensure any prev running slow UC. Ignore any error"
             // sh "kubectl delete -f selenium-standalone-slow.yml -n selenium"
             // }
+             
+             try {
+              echo "ensure any prev running slow UC. Ignore any error"
+              sh "kubectl delete -f selenium-standalone-slow.yml -n selenium"
+             } catch (err) {
+                //ignore
+             }
            sh "kubectl create -f selenium-standalone-slow.yml -n selenium"
              sleep(time:10,unit:"SECONDS")
              
