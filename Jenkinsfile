@@ -5,7 +5,7 @@ pipeline {
          steps{
            script {
             echo "Validating Feature Flag"
-            SLEEP_TIME = Math.abs( new Random().nextInt() % (15 - 10) ) + 10;
+            SLEEP_TIME = Math.abs( new Random().nextInt() % (13 - 9) ) + 9;
             sh "sleep $SLEEP_TIME"
            }
         }
@@ -14,7 +14,7 @@ pipeline {
          steps{
            script {
             echo "Enabling Feature Flag"
-            rand = Math.abs( new Random().nextInt() % (18 - 11) ) + 11;
+            rand = Math.abs( new Random().nextInt() % (18 - 13) ) + 13;
             sh "sleep $SLEEP_TIME"
            }
         }
