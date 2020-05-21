@@ -1,11 +1,19 @@
 pipeline {
  agent any
  stages {
-    stage('Deploy - NA Prv Feature Flag') {
+      stage('Validate-Feature Flag') {
          steps{
            script {
-            echo "Maven deploy"
-            sleep(time:25,unit:"SECONDS")
+            echo "Validating Feature Flag"
+            sleep(time:12,unit:"SECONDS")
+           }
+        }
+    }
+    stage('Deploy-Feature Flag') {
+         steps{
+           script {
+            echo "Enabling Feature Flag"
+            sleep(time:21,unit:"SECONDS")
            }
         }
     }
@@ -16,13 +24,13 @@ pipeline {
             dir ("/root/selenium") {
             echo "running Tests"
              
-             try {
-              echo "ensure any prev running slow UC is shut. Ignore any error due to this"
-              sh "kubectl delete -f selenium-standalone-slow.yml -n selenium"
-             } catch (err) {
-                //ignore
-             }
-           sh "kubectl create -f selenium-standalone-slow.yml -n selenium"
+             //try {
+              //echo "ensure any prev running slow UC is shut. Ignore any error due to this"
+             // sh "kubectl delete -f selenium-standalone-slow.yml -n selenium"
+             //} catch (err) {
+               // //ignore
+             //}
+           //sh "kubectl create -f selenium-standalone-slow.yml -n selenium"
              sleep(time:10,unit:"SECONDS")
              
             loadGeneratorName = env.STAGE_NAME;
