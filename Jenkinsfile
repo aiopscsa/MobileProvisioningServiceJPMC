@@ -79,6 +79,7 @@ pipeline {
              
            sleep(time:10,unit:"SECONDS")
              
+             
            sh "kubectl delete -f selenium-standalone-slow.yml -n selenium"
              echo "Done Blazemeter Test"
          } 
