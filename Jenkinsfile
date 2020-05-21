@@ -1,15 +1,7 @@
 pipeline {
  agent any
  stages {
-    stage('build') {
-         steps{
-           script {
-            echo "Maven Build"
-            sleep(time:15,unit:"SECONDS")
-           }
-         }
-    }
-    stage('deploy') {
+    stage('Deploy - NA Prv Feature Flag') {
          steps{
            script {
             echo "Maven deploy"
@@ -17,43 +9,15 @@ pipeline {
            }
         }
     }
-  /*
-    stage('Blazemeter'){
-        steps{
-           script {
-            loadGeneratorName = env.STAGE_NAME;
-            loadGeneratorStartTime = System.currentTimeMillis();
-            blazeMeterTest credentialsId:'ae0fe96b-5b1e-4c32-9dc6-06b219da766d',
-            serverUrl:'https://blazemeter.ca.com',
-            //testId:'6518001',
-            testId:'7389604',
-            notes:'',
-            sessionProperties:'',
-            jtlPath:'',
-            junitPath:'',
-            getJtl:false,
-            getJunit:false
-            loadGeneratorEndTime = System.currentTimeMillis();
-
-                         map = [jenkinsPluginName: "CAAPM"];
-          }
-        }
-    }
-    */
     
-    stage('Selenium') {
+    stage('Blazemeter') {
          steps{
            script {
             dir ("/root/selenium") {
-            echo "running Selenium Test"
-             //Deleting selenium just in case - ignore the error if it was deleted already
-            // catchError {
-            //  echo "ensure any prev running slow UC. Ignore any error"
-            // sh "kubectl delete -f selenium-standalone-slow.yml -n selenium"
-            // }
+            echo "running Tests"
              
              try {
-              echo "ensure any prev running slow UC. Ignore any error"
+              echo "ensure any prev running slow UC is shut. Ignore any error due to this"
               sh "kubectl delete -f selenium-standalone-slow.yml -n selenium"
              } catch (err) {
                 //ignore
@@ -88,13 +52,12 @@ pipeline {
     }
   
      
-    stage('CAAPMPerformanceComparator') {
+    stage('CA APM Plugin') {
         steps { 
              caapmplugin performanceComparatorProperties: "${env.WORKSPACE}/caapm-performance-comparator/properties/performance-comparator.properties",
               loadGeneratorStartTime: "${loadGeneratorStartTime}",
              loadGeneratorEndTime: "$loadGeneratorEndTime",
              loadGeneratorName: "$loadGeneratorName",
-
                             attribsStr: "$map";
         }
     }  
