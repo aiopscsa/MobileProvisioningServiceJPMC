@@ -14,7 +14,7 @@ pipeline {
          steps{
            script {
             echo "Enabling Feature Flag"
-            rand = Math.abs( new Random().nextInt() % (18 - 13) ) + 13;
+            SLEEP_TIME = Math.abs( new Random().nextInt() % (18 - 13) ) + 13;
             sh "sleep $SLEEP_TIME"
            }
         }
