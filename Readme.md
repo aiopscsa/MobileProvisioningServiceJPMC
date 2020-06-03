@@ -1,4 +1,4 @@
-#Mobile Provisioning Service
+#Mobile Provisioning Service -
 
 This project is tightly integrated with DevOps Demo in Open Access. 
 
