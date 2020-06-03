@@ -7,7 +7,7 @@ pipeline {
          steps{
            script {
             echo "Validating Feature Flag"
-            SLEEP_TIME = Math.abs( new Random().nextInt() % (13 - 9) ) + 9;
+            SLEEP_TIME = Math.abs( new Random().nextInt() % (13 - 8) ) + 8;
             sh "sleep $SLEEP_TIME"
            }
         }
@@ -16,8 +16,11 @@ pipeline {
          steps{
            script {
             echo "Enabling Feature Flag"
-            SLEEP_TIME = Math.abs( new Random().nextInt() % (18 - 13) ) + 13;
+            SLEEP_TIME = Math.abs( new Random().nextInt() % (19 - 13) ) + 13;
             sh "sleep $SLEEP_TIME"
+            sh "/bin/cp -f $WORKSPACE/OIJenkinsChangeEvent.sh.template $WORKSPACE/OIJenkinsChangeEvent.sh"
+            sh "sed -i \"s/BUILD_NUMBER/$BUILD_NUMBER/g\" $WORKSPACE/OIJenkinsChangeEvent.sh"
+            sh "$WORKSPACE/OIJenkinsChangeEvent.sh"
            }
         }
     }
