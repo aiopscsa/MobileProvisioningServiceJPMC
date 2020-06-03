@@ -1,5 +1,5 @@
 //This Jenkinsfile is tightly integrated with DevOps Demo in Open Access. 
-//Pls contact Srikant.noorani@broadcom.com before manking any change to this
+//Pls contact Srikant.noorani@broadcom.com before making any change to this
 pipeline {
  agent any
  stages {
