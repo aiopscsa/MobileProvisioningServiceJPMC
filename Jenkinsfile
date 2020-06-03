@@ -20,6 +20,7 @@ pipeline {
             sh "sleep $SLEEP_TIME"
             sh "/bin/cp -f $WORKSPACE/OIJenkinsChangeEvent.sh.template $WORKSPACE/OIJenkinsChangeEvent.sh"
             sh "sed -i \"s/BUILD_NUMBER/$BUILD_NUMBER/g\" $WORKSPACE/OIJenkinsChangeEvent.sh"
+            sh "chmod +x $WORKSPACE/OIJenkinsChangeEvent.sh"
             sh "$WORKSPACE/OIJenkinsChangeEvent.sh"
            }
         }
