@@ -74,7 +74,12 @@ pipeline {
              loadGeneratorEndTime: "$loadGeneratorEndTime",
              loadGeneratorName: "$loadGeneratorName",
                             attribsStr: "$map";
+         
+           sleep(time:5,unit:"SECONDS")
+           
+           sh "cat /var/jenkins_home/jobs/MobileProvisioningService/builds/8/log |grep \"Performance Comparison FAILED\""
         }
+     
     }  
     
   
