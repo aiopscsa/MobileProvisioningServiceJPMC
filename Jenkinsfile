@@ -18,10 +18,10 @@ pipeline {
             echo "Enabling Feature Flag"
             SLEEP_TIME = Math.abs( new Random().nextInt() % (19 - 13) ) + 13;
             sh "sleep $SLEEP_TIME"
-            sh "/bin/cp -f $WORKSPACE/OIJenkinsChangeEvent.sh.template $WORKSPACE/OIJenkinsChangeEvent.sh"
-            sh "sed -i \"s/BUILD_NUMBER/$BUILD_NUMBER/g\" $WORKSPACE/OIJenkinsChangeEvent.sh"
-            sh "chmod +x $WORKSPACE/OIJenkinsChangeEvent.sh"
-            sh "$WORKSPACE/OIJenkinsChangeEvent.sh"
+            sh "/bin/cp -f $WORKSPACE/OIJenkinsChangeEventStart.sh.template $WORKSPACE/OIJenkinsChangeEventStart.sh"
+            sh "sed -i \"s/BUILD_NUMBER/$BUILD_NUMBER/g\" $WORKSPACE/OIJenkinsChangeEventStart.sh"
+            sh "chmod +x $WORKSPACE/OIJenkinsChangeEventStart.sh"
+            sh "$WORKSPACE/OIJenkinsChangeEventStart.sh"
            }
         }
     }
@@ -77,7 +77,10 @@ pipeline {
          
            sleep(time:5,unit:"SECONDS")
            
-           sh "cat /var/jenkins_home/jobs/MobileProvisioningService/builds/8/log |grep \"Performance Comparison FAILED\""
+            sh "/bin/cp -f $WORKSPACE/OIJenkinsChangeEventEnd.sh.template $WORKSPACE/OIJenkinsChangeEventEnd.sh"
+            sh "sed -i \"s/BUILD_NUMBER/$BUILD_NUMBER/g\" $WORKSPACE/OIJenkinsChangeEventEnd.sh"
+            sh "chmod +x $WORKSPACE/OIJenkinsChangeEventEnd.sh"
+            sh "$WORKSPACE/OIJenkinsChangeEventEnd.sh"
         }
      
     }  
