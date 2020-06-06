@@ -5,7 +5,7 @@ EPOCH_TIME=`date +%s%3N`
 UTC_TIME=`date -u '+%Y-%m-%dT%H:%M:%S+0000'`
 
 STATUS=FAIL
-if [ X"$STATUS_TEMP" == "X" ] then
+if [ X"$STATUS_TEMP" == "X" ]; then
     STATUS=PASS
 fi
 
