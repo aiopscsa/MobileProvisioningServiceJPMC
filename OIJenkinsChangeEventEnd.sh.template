@@ -1,6 +1,6 @@
 #!/bin/bash
 TENANT_ID=`grep tenant /var/jenkins_home/workspace/MobileProvisioningService/caapm-performance-comparator/properties/performance-comparator.properties|awk -F= '{print $2}'`
-STATUS_TEMP=`/var/jenkins_home/jobs/MobileProvisioningService/builds/8/log |grep "Performance Comparison FAILED"`
+STATUS_TEMP=`cat /var/jenkins_home/jobs/MobileProvisioningService/builds/BUILD_NUMBER/log |grep "Performance Comparison FAILED"`
 EPOCH_TIME=`date +%s%3N`
 UTC_TIME=`date -u '+%Y-%m-%dT%H:%M:%S+0000'`
 
