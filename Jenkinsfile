@@ -34,11 +34,11 @@ pipeline {
              
              try {
               echo "ensure any prev running slow UC is shut. Ignore any error due to this"
-              ////sh "kubectl delete -f selenium-standalone-slow.yml -n selenium"
+              //////sh "kubectl delete -f selenium-standalone-slow.yml -n selenium"
              } catch (err) {
                 //ignore
              }
-             ////sh "kubectl create -f selenium-standalone-slow.yml -n selenium"
+             //////sh "kubectl create -f selenium-standalone-slow.yml -n selenium"
              sleep(time:10,unit:"SECONDS")
              
             loadGeneratorName = env.STAGE_NAME;
