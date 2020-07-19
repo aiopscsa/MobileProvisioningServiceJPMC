@@ -1,13 +1,8 @@
 #!/bin/bash
 TENANT_ID=`grep tenant /var/jenkins_home/workspace/MobileProvisioningService/caapm-performance-comparator/properties/performance-comparator.properties|awk -F= '{print $2}'`
-STATUS_TEMP=`cat /var/jenkins_home/jobs/MobileProvisioningService/builds/BUILD_NUMBER/log |grep "Performance Comparison FAILED"`
 EPOCH_TIME=`date +%s%3N`
 UTC_TIME=`date -u '+%Y-%m-%dT%H:%M:%S+0000'`
 
-STATUS=FAIL
-if [ X"$STATUS_TEMP" == "X" ]; then
-    STATUS=PASS
-fi
 
 echo "$TENANT_ID $EPOCH_TIME $UTC_TIME"
 
@@ -32,7 +27,7 @@ curl -v -k -X POST 'https://api.dxi-na1.saas.broadcom.com/ingestion' \
           "change_type": "JenkinsBuildChangeEvent",
           "event_unique_id": "Jenkins-b778ea26-ba92-4235-b08f-5bd7d1b6d3e7-'$EPOCH_TIME'",
           "ci_unique_id": "100892",
-          "message": "BuildNumber : BUILD_NUMBER, BuildStatus : '$STATUS', ApplicationName : \"TIXCHANGE Web\", GIT_COMMIT_MESSAGE : North America 5G provisioning Feature Flag Enabled, jenkinsPluginName : CAAPM",
+          "message": "BuildNumber : BUILD_NUMBER, BuildStatus : STATUS, ApplicationName : \"TIXCHANGE Web\", GIT_COMMIT_MESSAGE : North America 5G provisioning Feature Flag Enabled, jenkinsPluginName : CAAPM",
           "timestamp": "'$UTC_TIME'",
           "status": "NEW"
         }
